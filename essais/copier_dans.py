@@ -1,5 +1,6 @@
 
 import pyperclip
+from time import sleep
 
 from_clipboard  = """x_Génital, Urétral
 x_LBA, Pulmonaire, Nasal
@@ -88,7 +89,8 @@ print(lst)
 for line in lst:
     print (line)
     pyperclip.copy(line)
-    input("next...")
+
+    sleep(5)
 
 
 
