@@ -13,6 +13,7 @@ from pprint import pprint
 
 lst_of_files =  [ '24041234',  '24041227', '24040301']
 
+
 glm_app = {'icone_liste_patients' : Point(x=39, y=82),
            'liste_patients' : Point(x=773, y=313)
              }
@@ -43,14 +44,32 @@ def open_cr():
     sleep(0.5)
 
 def locate_all_cr():
-    cr_location = pyautogui.locateAllOnScreen("../images/icone_1_white_on_black.png")
+    sleep(1)
+    # print("Je cherche...")
+    try:
+        cr_location = pyautogui.locateAllOnScreen("../images/icone_1_white_on_black.png")
+    except:
+        print("Pas de première image")
+
+    try:
+        cr_location = pyautogui.locateAllOnScreen("../images/icone_1_black_on_white.png")
+    except :
+        print("Pas de seconde image")
 
     for cr in cr_location:
         print(cr)
         pyautogui.moveTo(cr)
         pyautogui.click()
-
         rejouer_cr()
+
+    sleep(0.5)
+    try:
+        fermer_button = pyautogui.locateOnScreen("../images/fermer_icon.png")
+        pyautogui.moveTo(fermer_button)
+        pyautogui.click()
+    except:
+        print("Je ne trouve pas le bouton de fermeture. ")
+
         input("Suite...")
 
 def rejouer_cr():
@@ -68,6 +87,14 @@ if __name__ == "__main__":
     # ouvrir_liste_patients()
     pyautogui.moveTo(glm_app['liste_patients'], duration=0.5)
     pyautogui.click()
-    find_order('24041234')
+    find_order('24060048')
     open_cr()
     locate_all_cr()
+
+"""
+24058295
+24060048
+24060109
+24041269
+24059471
+"""
