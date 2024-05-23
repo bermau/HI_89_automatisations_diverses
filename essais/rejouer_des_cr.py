@@ -15,7 +15,8 @@ lst_of_files =  [ '24041234',  '24041227', '24040301']
 
 
 glm_app = {'icone_liste_patients' : Point(x=39, y=82),
-           'liste_patients' : Point(x=773, y=313)
+           'liste_patients' : Point(x=773, y=313),
+            'bas_crs' : Point(x=997, y=214)
              }
 
 def ouvrir_liste_patients():
@@ -44,20 +45,21 @@ def open_cr():
     sleep(0.5)
 
 def locate_all_cr():
-    sleep(1)
+    sleep(0.5)
     # print("Je cherche...")
-    try:
-        cr_location = pyautogui.locateAllOnScreen("../images/icone_1_white_on_black.png")
-    except:
-        print("Pas de première image")
+    pyautogui.write(['down', 'down'])
+    # pyautogui.moveTo(glm_app['bas_crs'])
+    # pyautogui.click()
+    sleep(0.2)
+    cr_location = pyautogui.locateAllOnScreen("../images/icone_1_black_on_white.png")
 
-    try:
-        cr_location = pyautogui.locateAllOnScreen("../images/icone_1_black_on_white.png")
-    except :
-        print("Pas de seconde image")
+    # try:
+    #     cr_location = pyautogui.locateAllOnScreen("../images/icone_1_black_on_white.png")
+    # except :
+    #     print("Pas de seconde image")
 
-    for cr in cr_location:
-        print(cr)
+    for i, cr in enumerate(cr_location):
+        print(i, cr)
         pyautogui.moveTo(cr)
         pyautogui.click()
         rejouer_cr()
@@ -68,9 +70,9 @@ def locate_all_cr():
         pyautogui.moveTo(fermer_button)
         pyautogui.click()
     except:
-        print("Je ne trouve pas le bouton de fermeture. ")
-
-        input("Suite...")
+        print("Je ne trouve pas le bouton de fermeture. .. je vais utiliser Esc")
+        pyautogui.write(['esc'])
+        sleep(5)
 
 def rejouer_cr():
     pyautogui.write(['f6'])
@@ -87,14 +89,17 @@ if __name__ == "__main__":
     # ouvrir_liste_patients()
     pyautogui.moveTo(glm_app['liste_patients'], duration=0.5)
     pyautogui.click()
-    find_order('24060048')
+    find_order('24056316')
     open_cr()
     locate_all_cr()
 
 """
-24058295
-24060048
-24060109
-24041269
-24059471
+ 24056316
+ 24056629
+ 24055897
+ 24055404
+ 24054266
+ 24054266
+ 24054033
+
 """
