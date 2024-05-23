@@ -1,5 +1,5 @@
 # Copy / Past parameters between 2 GUI programs
-# La fenètre étudiée est Procédure et Analyseur
+# Les 2 fenètres étudiées sont Procédure et Analyseur
 
 from lib_pyautogui import  GuiApp
 import pyautogui
