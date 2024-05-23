@@ -86,12 +86,19 @@ def rejouer_cr():
 
 
 if __name__ == "__main__":
-    # ouvrir_liste_patients()
-    pyautogui.moveTo(glm_app['liste_patients'], duration=0.5)
-    pyautogui.click()
-    find_order('24056316')
-    open_cr()
-    locate_all_cr()
+    lst = """24057761
+24058660"""
+
+    for dossier in lst.split("\n"):
+
+        print(f"Traitement du dossier {dossier}")
+
+        # ouvrir_liste_patients()
+        pyautogui.moveTo(glm_app['liste_patients'], duration=0.5)
+        pyautogui.click()
+        find_order(dossier)
+        open_cr()
+        locate_all_cr()
 
 """
  24056316
