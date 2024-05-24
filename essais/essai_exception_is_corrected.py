@@ -12,5 +12,6 @@ try:
     pyautogui.useImageNotFoundException()
     location = pyautogui.locateOnScreen(NOT_EXISTS)
     print('image found')
+    print(location)
 except pyautogui.ImageNotFoundException:
     print('ImageNotFoundException: image not found')
