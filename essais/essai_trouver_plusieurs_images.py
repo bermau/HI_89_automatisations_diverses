@@ -10,7 +10,7 @@ pyscreeze.USE_IMAGE_NOT_FOUND_EXCEPTION = False
 
 from pprint import pprint
 
-NOT_EXISTS = "../images/icone_1_white_on_black_copy.png"
+NOT_EXISTS = "../images/icone_1_white_on_black.png"
 EXISTS = "../images/mate_file.png"
 
 Point = {'start': Point(x=500, y=200)}
