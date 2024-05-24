@@ -9,8 +9,6 @@ from time import sleep
 
 class GuiApp:
     """A GUI Form"""
-
-
     def __init__(self):
         self.cible = self.find_position()
 
