@@ -22,24 +22,23 @@ pyautogui.click()
 
 def trouver_images():
     try:
-        # pyautogui.useImageNotFoundException()
+        pyautogui.useImageNotFoundException(False)
         # pyscreeze.USE_IMAGE_NOT_FOUND_EXCEPTION = False
         ret = pyautogui.locateAllOnScreen(NOT_EXISTS)
-        return ret
+        return list(ret)
 
     except pyautogui.ImageNotFoundException:
         print("PAS TROUVé")
         return "BONJOR"
-    except pyscreeze.ImageNotFoundException:
-        print('RIEN')
-        return("TUTUTUTU")
     finally:
-        print("JE passe par la fin")
+        print("Je passe par la fin")
     return ["Rine trouvé du tout"]
 
 
 locations = trouver_images()
-
-for loc in locations:
-    print(loc)
-print("FINI")
+if locations:
+    for loc in locations:
+        print(loc)
+    print("FINI")
+else:
+    print("RIEN DU TOUT")
