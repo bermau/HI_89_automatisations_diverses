@@ -1,4 +1,4 @@
-# Le but est re jouer des CR sur glms
+# Le but est re-jouer des CR sur glms
 
 # On a une liste de dossier sur lesquels il faut faire une suite d'actions.
 
@@ -10,13 +10,15 @@ import pyperclip
 from time import sleep
 from pprint import pprint
 
-lst_of_files = ['24041234', '24041227', '24040301']
 
 glm_app = {'icone_liste_patients': Point(x=39, y=82),
            'liste_patients': Point(x=773, y=313),
            'bas_crs': Point(x=997, y=214)
            }
 
+
+# Simulation mode : True : simulate the action ; False : realize the action
+SIMULATE = True
 
 def ouvrir_liste_patients():
     pyautogui.moveTo(glm_app['icone_liste_patients'], duration=0.5)
@@ -47,16 +49,30 @@ def open_cr():
 
 
 def find_crs_locations():
-    """Fonction pour contourner un bug de pyautogui"""
+    """Trouve la liste des icônes de CR. gère ici 2 types d'icônes."""
     pyautogui.write(['up', 'up'])
     sleep(0.5)
 
     pyautogui.useImageNotFoundException(False)
-    locations = pyautogui.locateAllOnScreen("../images/cyber_prod_black_on_white.png")
+    locations = list(pyautogui.locateAllOnScreen("../images/cyber_prod_black_on_white.png"))
+
+    print(f"{locations=}")
+    sleep(5)
+
     if locations:
-        return list(locations)
+        print(f"Liste1 : {locations}")
+        return locations
     else:
-        return None
+        print("Liste1 était vide. ")
+        locations = list(pyautogui.locateAllOnScreen("../images/cr_stm.png"))
+
+        if locations:
+            print(f"Liste 2 : {locations=}")
+            return locations
+        else:
+            print(f"Liste 2 est vide !!! ")
+            return None
+
 
 
 def locate_all_cr():
@@ -88,7 +104,9 @@ def locate_all_cr():
 
 def rejouer_cr():
     pyautogui.write(['f6'])
-    pyautogui.write(['tab', 'tab', 'tab', 'space'], interval=0.1)
+    pyautogui.write(['tab', 'tab', 'tab'], interval=0.1)
+    if not SIMULATE:
+        pyautogui.write(['space'])
     sleep(0.2)
     ok_button = pyautogui.locateOnScreen("../images/OK_icon.png")
     if ok_button:
@@ -98,7 +116,9 @@ def rejouer_cr():
 
 
 if __name__ == "__main__":
-    lst = """24059313
+    lst = """24064454
+24063816
+24059313
 24059042
 24059113
 24059204
@@ -112,5 +132,4 @@ if __name__ == "__main__":
         find_order(dossier)
         open_cr()
         locate_all_cr()
-
         # input("Dossier suivant...")
