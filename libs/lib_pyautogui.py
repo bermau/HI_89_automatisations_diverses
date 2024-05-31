@@ -22,6 +22,8 @@ class GuiApp:
     def ask_for_positions(self):
         dico = {}
         cont = True
+        print("""Cet fonction permet de récupérer plusieurs points d'intérêt à l'écran et de les nommer.
+              'a' pour sélectionner""")
         while cont:
             print("Designer une positions et cliquer ")
 
@@ -47,4 +49,5 @@ class GuiApp:
 if __name__ == '__main__':
 
     app = GuiApp()
+    app.ask_for_positions()
 
