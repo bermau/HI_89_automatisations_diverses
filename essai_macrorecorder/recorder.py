@@ -42,7 +42,10 @@ def on_press(key):
             actions.append(('press', key.name, get_elapsed_time())) # ???? idem
 
 def on_release(key):
-    actions.append(('release', key.name, get_elapsed_time()))
+    try:
+        actions.append(('release', key.name, get_elapsed_time()))
+    except AttributeError:
+        actions.append(('release', key.char, get_elapsed_time()))
     if key == Key.esc:
         # Stop listener
         print("Stop !")
