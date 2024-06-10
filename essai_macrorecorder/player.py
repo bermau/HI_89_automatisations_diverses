@@ -10,6 +10,10 @@ with open('actions.json', 'r') as f:
 
 start_time = actions[0][2]
 
+print("Attention")
+time.sleep(2)
+print("Go")
+
 SPEED_ms = 500.0
 
 for action in actions:
@@ -18,7 +22,7 @@ for action in actions:
     if action_type == 'move':
         _, x, y, timestamp = action
         # L'affichage du curseur qui bouge est presque sans intérêt.
-        # time.sleep((timestamp - start_time)/SPEED_ms)
+        # time.sleep((timestamp start_time)/SPEED_ms)
         # pyautogui.moveTo(x, y)
     elif action_type == 'click':
         _, x, y, button, pressed, timestamp = action
@@ -33,7 +37,7 @@ for action in actions:
         pyautogui.scroll(dy, x, y)
     elif action_type == 'press':
         _, key, timestamp = action
-        time.sleep((timestamp - start_time)/SPEED_ms)
+        # time.sleep((timestamp - start_time)/SPEED_ms)
         pyautogui.press(key)
     elif action_type == 'release':
         _, key, timestamp = action
