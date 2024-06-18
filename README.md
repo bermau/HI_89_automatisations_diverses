@@ -14,4 +14,4 @@ utiliser le programme [aspirate_a_combobox.py](essais%2Faspirate_a_combobox.py).
 
 Dans [essai_macrorecorder](essai_macrorecorder), j'ai créé [recorder.py](essai_macrorecorder%2Frecorder.py) et 
 [player.py](essai_macrorecorder%2Fplayer.py), qui permettent d'enregistrer et de rejouer des mouvements de souris et
-des click.
+des clicks.
